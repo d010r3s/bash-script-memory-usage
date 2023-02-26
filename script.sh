@@ -1,14 +1,15 @@
 #!/bin/bash
+par = 70.000 #parament of free space
+freespace = `df -m |grep "/dev/sdb1" | awk '{print $4}'` #fiding free space
+d = $(bc<<<"scale=3;$freespace/512")
+x = $(bc<<<"scale=3;$d*100") #percent of free space
+x = $(bc<<<"scale=3;100-$x") #percent of filled space
 
-log_dir="/path/to/log"
-backup_dir="/path/to/backup"
-occupancy_threshold=70
+echo $y"%"
 
-occupancy=$(df -h "$log_dir" | awk '{print $5}' | tail -1 | sed 's/%//')
-
-if [ $occupancy -gt $occupancy_threshold ]; then
-  # Archive files in the backup directory
-  tar -czf "$backup_dir/log_archive_$(date +%Y%m%d%H%M%S).tar.gz" "$log_dir"/*
-  # Delete files in the log directory
-  rm -rf "$log_dir"/*
+if [ $(echo "$y > $par" | bc) ]
+then
+	tar cf mytar.tar.gz --directory
+	cp /dev/sdb1 /dev/sdb2
+	rm -rf /dev/sdb1
 fi
