@@ -1,4 +1,5 @@
 #!/bin/bash
+
 log_dir = "/LOG"
 backup_dir = "/BACKUP"
 occupancy_threshold = 70
