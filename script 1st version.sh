@@ -5,7 +5,7 @@ backup_dir="/home/vboxuser/Documents/backup/"
 occupancy_threshold=70
 n=2
 occupancy=$(df -h "$log_dir" | awk '{print $5}' | tail -1 | sed 's/%//')
-if [[ $occupancy < $occupancy_threshold ]]; then
+if [[ $occupancy -gt $occupancy_threshold ]]; then
 	files_to_archive=($(ls -1t "$log_dir"))
 	files_to_archive=("${files_to_archive[@]:0:$n}")
 	#mkdir -p "$backup_dir/log_archive_$(date +%Y%m%d%H%M)"
