@@ -1,7 +1,7 @@
 #!/bin/bash
 
-log_dir="/home/vboxuser/log2"
-backup_dir="/home/vboxuser/backup"
+log_dir="/home/vboxuser/Documents/log"
+backup_dir="/home/vboxuser/Documents/backup"
 occupancy_threshold=70
 n=1
 occupancy=$(df -h "$log_dir" | awk '{print $5}' | tail -1 | sed 's/%//')
